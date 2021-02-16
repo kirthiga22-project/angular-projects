@@ -1,0 +1,51 @@
+.name-form-control{
+    margin-left: 55px;
+}
+.address-form-control{
+    margin-left: 32px;
+}
+
+.amount-form-control{
+    margin-left: 50px;
+}
+.contact-form-control{
+    margin-left: 35px;
+}
+
+.bill-form-control{
+    margin-left: 75px;
+}
+
+.invalid-feedback{
+    margin-left: 150px;
+    color: red;
+}
+.hospitalname-form-control{
+    margin-left: 45px;
+}
+.discharge-form-control{
+    margin-left: 45px;
+}
+.admission-form-control{
+    margin-left: 40px;
+}
+.dob-form-control{
+    margin-left: 60px;
+}
+
+
+
+.header{
+    font-size: medium;
+    font-style: italic;
+    font-display: bold;
+    margin-left: 100px;
+}
+.btn{
+    margin-left: 100px;
+}
+
+table, th , td{
+    width: 80%;
+    
+}

@@ -1,0 +1,111 @@
+<div class="form-group">
+    <table>
+        <tr>
+            <td>
+                <a class="nav-link" routerLink='/dashboard'>Home</a>
+            </td>
+            <td>
+                <a routerLink='' (click)="logout()">Logout</a>
+            </td>
+        </tr>
+    </table>
+</div>
+<p class="header"><b>Claim Form</b></p>
+<form [formGroup]="claimForm" (ngSubmit)="onClaimSubmit()">
+    <div class="form-group">
+        <label for="patientname">Patient Name *</label>
+        <input type="text" formControlName="patientname" name="patientname" class="name-form-control"
+            [ngClass]="{'is-invalid': claimSubmitted && f.patientname.errors }" />
+        <div *ngIf="claimSubmitted && f.patientname.errors" class="invalid-feedback">
+            <div *ngIf="f.patientname.errors.required">Patient Name is required</div>
+            <div *ngIf="f.patientname.invalid">Patient Name should contain only alphabets and space</div>
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="dob">Date of birth *</label>
+        <input type="date" formControlName="dob" max="{{maxDob}}" min="{{minDob}}" name="dob" class="dob-form-control"
+            [ngClass]="{'is-invalid': claimSubmitted && f.dob.errors }" />
+        <div *ngIf="claimSubmitted && f.dob.errors" class="invalid-feedback">
+            <div *ngIf="f.dob.errors.required">Date of birth is required</div>
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="admissiondate">Admission Date *</label>
+        <input type="date" formControlName="admissiondate" name="admissiondate" class="admission-form-control"
+            [ngClass]="{'is-invalid': claimSubmitted && f.admissiondate.errors }" />
+        <div *ngIf="claimSubmitted && f.admissiondate.errors" class="invalid-feedback">
+            <div *ngIf="f.admissiondate.errors.required">Admission date is required</div>
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="dischargedate">Discharge Date *</label>
+        <input type="date" formControlName="dischargedate" name="dischargedate" class="discharge-form-control"
+            [ngClass]="{'is-invalid': claimSubmitted && f.dischargedate.errors }" />
+        <div *ngIf="claimSubmitted && f.dischargedate.errors" class="invalid-feedback">
+            <div *ngIf="f.dischargedate.errors.required">Discharge date is required</div>
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="hospitalname">Hospital Name *</label>
+        <input type="text" formControlName="hospitalname" name="hospitalname" class="hospitalname-form-control"
+            [ngClass]="{'is-invalid': claimSubmitted && f.hospitalname.errors }" />
+        <div *ngIf="claimSubmitted && f.hospitalname.errors" class="invalid-feedback">
+            <div *ngIf="f.hospitalname.errors.required">Hospital Name is required</div>
+            <div *ngIf="f.hospitalname.invalid">Hospital Name should contain only alphabets and space</div>
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="hospitaladdress">Hospital Address *</label>
+        <input type="text" formControlName="hospitaladdress" name="hospitaladdress" class="address-form-control"
+            [ngClass]="{'is-invalid': claimSubmitted && f.hospitaladdress.errors }" />
+        <div *ngIf="claimSubmitted && f.hospitaladdress.errors" class="invalid-feedback">
+            <div *ngIf="f.hospitaladdress.errors.required">Hospital Address is required</div>
+        </div>
+    </div>
+    <br />
+
+    <div class="form-group">
+        <label for="claimamount">Claim amount *</label>
+        <input type="text" formControlName="claimamount" name="claimamount" class="amount-form-control"
+            [ngClass]="{'is-invalid': claimSubmitted && f.claimamount.errors }" />
+        <div *ngIf="claimSubmitted && f.claimamount.errors" class="invalid-feedback">
+            <div *ngIf="f.claimamount.errors.required">Claim amount is required</div>
+            <div *ngIf="f.claimamount.invalid">Claim amount is invalid. It should contain only digits.</div>
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="contactno">Contact Number *</label>
+        <input type="text" formControlName="contactno" name="claimcontact" class="contact-form-control"
+            [ngClass]="{'is-invalid': claimSubmitted && f.contactno.errors }" />
+        <div *ngIf="claimSubmitted && f.contactno.errors" class="invalid-feedback">
+            <div *ngIf="f.contactno.errors.required">Contact Number is required</div>
+            <div *ngIf="f.contactno.invalid">Contact Number is invalid. It should contain only 10 digits.</div>
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="bill">Bill Image *</label>
+        <input type="file" ng-model="bill" accept=".png" (change)="changeListener($event)" formControlName="bill"
+            class="bill-form-control" [ngClass]="{'is-invalid': claimSubmitted && f.bill.errors }" />
+        <div *ngIf="claimSubmitted && f.bill.errors" class="invalid-feedback">
+            <div *ngIf="f.bill.errors.required">Bill image is required</div>
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <button class="btn" id="claimsubmit">
+            Submit
+        </button>
+    </div>
+    <br />
+    <div id="claimmsg" class="form-group" *ngIf="claimSubmitShowMsg">
+        <strong>Claim Submitted Successfully. <a class="nav-link" id="claimsrouter" routerLink='/claimslist'>Click here to view available
+                claims!</a></strong>
+    </div>
+</form>
